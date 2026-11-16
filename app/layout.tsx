@@ -3,6 +3,7 @@ import { Fraunces, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { siteUrl } from "@/lib/siteUrl";
+import CursorCharm from "@/components/CursorCharm";
 
 const display = Fraunces({
   variable: "--font-display",
@@ -68,6 +69,7 @@ export default function RootLayout({
       <body className="min-h-full">
         {children}
         <Analytics />
+        <CursorCharm />
       </body>
     </html>
   );
