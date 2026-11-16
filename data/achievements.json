@@ -25,5 +25,14 @@
     "id": "odoo-hackathon-2026",
     "title": "Finalist",
     "year": 2026
+  },
+  {
+    "id": "grand-prix-hackathon-2026",
+    "title": "Special Mention",
+    "event": "Grand Prix Hackathon",
+    "year": 2026,
+    "description": "",
+    "certificateUrl": null,
+    "certificateName": null
   }
 ]
