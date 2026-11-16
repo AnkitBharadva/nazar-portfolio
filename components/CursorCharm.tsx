@@ -5,9 +5,13 @@ import LemonChilli from "./LemonChilli";
 
 /**
  * A very small nimbu-mirchi that hangs from the cursor arrow's tip and
- * follows the mouse everywhere on the site. The charm is centred under
- * the tip (the arrow's hotspot) and dangles a few pixels below it, so
- * it reads as hanging from the cursor.
+ * follows the mouse everywhere on the site. The charm is attached
+ * exactly to the tip (the cursor hotspot): the thread in the SVG runs
+ * down the centre of the viewBox (x=36 of 72) and starts at the very
+ * top edge (y=0), so at width 16 the thread sits 8px from the charm's
+ * left edge and the div's top edge is the thread's start — the div is
+ * placed at (cursorX - 8, cursorY), no gap, so the thread touches the
+ * tip point precisely.
  *
  * Desktop only: it activates only for fine pointers (a real mouse) and
  * stays off under prefers-reduced-motion. It never intercepts clicks
@@ -36,8 +40,10 @@ export default function CursorCharm() {
 
     const apply = () => {
       pending = false;
-      // Centre the 16px charm under the arrow tip, 4px below it.
-      el.style.transform = `translate3d(${x - 8}px, ${y + 4}px, 0)`;
+      // Thread centre (8px from the charm's left edge at width 16) on
+      // the tip's x, thread start (the div's top edge) on the tip's y —
+      // no gap, so the charm is tied to the cursor point exactly.
+      el.style.transform = `translate3d(${x - 8}px, ${y}px, 0)`;
       el.style.opacity = "1";
     };
     const onMove = (e: MouseEvent) => {
