@@ -58,29 +58,39 @@ export default function Hero({
 
   return (
     <section id="about" className="mx-auto w-full max-w-6xl px-5 pb-16 pt-10 sm:px-8 sm:pt-14">
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,4fr)] lg:gap-14">
-        {/* Text column + battu rail: the battu hangs beside the name in
-            its own rail — never over the photo. The rail is desktop-only;
-            on mobile the hero is just the thumb + name. */}
-        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-8">
-          <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-muted">
-              01 — About
-            </p>
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[auto_minmax(0,5fr)_minmax(0,4fr)] lg:gap-14">
+        {/* Battu rail, leftmost: the battu hangs from a short rod at the
+            page's left edge, with the name and intro in the middle column
+            and the photo on the right. The rail is desktop-only; on
+            mobile the hero is just the thumb + name. */}
+        <div className="relative hidden lg:block" aria-hidden="true">
+          <div className="h-px w-32 bg-ink" />
+          <div className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2">
+            <NazarBattu swingKey={swingKey} caption={false} />
+          </div>
+        </div>
+
+        {/* Text column — name, intro, interests, actions, stats. */}
+        <div>
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-muted">
+            01 — About
+          </p>
             {/* Mobile profile header: small portrait beside the name. On
                 desktop this is a plain block and the portrait is hidden —
                 the large framed photo column carries the portrait there. */}
             <div className="mt-3 flex items-center gap-4 lg:block">
               <div className="relative shrink-0 border border-hairline bg-white p-1 lg:hidden">
-                <SiteImage
-                  preset="thumb"
-                  src={profile.photo}
-                  alt={`Portrait of ${profile.name}`}
-                  width={128}
-                  height={160}
-                  className="aspect-[4/5] w-24 object-cover sm:w-32"
-                  priority
-                />
+                <div className="overflow-hidden">
+                  <SiteImage
+                    preset="thumb"
+                    src={profile.photo}
+                    alt={`Portrait of ${profile.name}`}
+                    width={128}
+                    height={160}
+                    className="photo-drift aspect-[4/5] w-24 object-cover sm:w-32"
+                    priority
+                  />
+                </div>
                 <div className="absolute -bottom-2 -right-2">
                   <EvilEye size={28} glow />
                 </div>
@@ -159,29 +169,22 @@ export default function Hero({
                 </div>
               ))}
             </dl>
-          </div>
-
-          {/* Battu rail: the battu hangs from a short rod beside the name. */}
-          <div className="relative hidden lg:block" aria-hidden="true">
-            <div className="h-px w-32 bg-ink" />
-            <div className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2">
-              <NazarBattu swingKey={swingKey} caption={false} />
-            </div>
-          </div>
         </div>
 
         {/* Photo column — desktop only, clean frame, no hanging battu.
             On mobile the small portrait beside the name carries the photo. */}
         <div className="mx-auto hidden w-full max-w-sm lg:mx-0 lg:block lg:justify-self-end">
           <div className="relative border border-hairline bg-white p-2">
-            <SiteImage
-              preset="hero"
-              src={profile.photo}
-              alt={`Portrait of ${profile.name}`}
-              width={768}
-              height={1024}
-              className="aspect-[3/4] w-full object-cover"
-            />
+            <div className="overflow-hidden">
+              <SiteImage
+                preset="hero"
+                src={profile.photo}
+                alt={`Portrait of ${profile.name}`}
+                width={768}
+                height={1024}
+                className="photo-drift aspect-[3/4] w-full object-cover"
+              />
+            </div>
             <div className="absolute -bottom-4 -right-2">
               <EvilEye size={44} glow />
             </div>

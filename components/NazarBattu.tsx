@@ -32,7 +32,12 @@ export default function NazarBattu({
           <div className="h-1.5 w-0.5 bg-ink" />
           <EvilEye size={92} glow />
           <div className="h-1 w-0.5 bg-ink" />
-          <LemonChilli width={54} />
+          {/* The lemon + chillies sway on their own pivot, slightly out of
+              phase with the whole battu — two pendulums, not one rigid
+              hang. */}
+          <div className="chilli-sway">
+            <LemonChilli width={54} />
+          </div>
         </div>
       </div>
       {caption && (
