@@ -34,6 +34,8 @@ export const metadata: Metadata = {
   title: siteTitle,
   description: siteDescription,
   alternates: { canonical: "/" },
+  // Google Search Console ownership verification (URL-prefix property).
+  verification: { google: "hC5h1gBsli435g-th-BE_WOycBLeV6DB9OdrUaKQkrM" },
   openGraph: {
     title: siteTitle,
     description: siteDescription,
