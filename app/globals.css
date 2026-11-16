@@ -142,6 +142,24 @@ body {
   will-change: transform;
 }
 
+/* The whole battu also bobs gently up and down (±4px over 6s) on its
+   own wrapper, so it never conflicts with the battu-hang rotate
+   transform or the rail's horizontal centring. The rod stays fixed —
+   only the battu floats. */
+@keyframes battu-bob {
+  0%,
+  100% {
+    transform: translateY(-4px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+.battu-bob {
+  animation: battu-bob 6s ease-in-out infinite;
+}
+
 /* ---------- Hero name reveal ---------- */
 /* Letter-by-letter reveal on load: each letter fades in and rises ~8px,
    staggered 40ms apart — the whole name is done in ~1s, then completely
@@ -177,6 +195,7 @@ body {
     opacity: 1;
   }
   .battu-hang,
+  .battu-bob,
   .chilli-sway,
   .photo-drift,
   .eye-glow {

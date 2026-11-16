@@ -66,7 +66,9 @@ export default function Hero({
         <div className="relative hidden lg:block" aria-hidden="true">
           <div className="h-px w-32 bg-ink" />
           <div className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2">
-            <NazarBattu swingKey={swingKey} caption={false} />
+            <div className="battu-bob">
+              <NazarBattu swingKey={swingKey} caption={false} />
+            </div>
           </div>
         </div>
 
@@ -102,9 +104,18 @@ export default function Hero({
                 <NameLetters name={profile.name} />
               </h1>
             </div>
-            <p className="mt-4 max-w-xl leading-relaxed text-ink-soft">{profile.bio}</p>
+            <p
+              className="fade-up mt-4 max-w-xl leading-relaxed text-ink-soft"
+              style={{ animationDelay: "100ms" }}
+            >
+              {profile.bio}
+            </p>
 
-            <ul className="mt-6 flex flex-wrap gap-2" aria-label="Interests">
+            <ul
+              className="fade-up mt-6 flex flex-wrap gap-2"
+              style={{ animationDelay: "250ms" }}
+              aria-label="Interests"
+            >
               {profile.interests.map((interest) => (
                 <li
                   key={interest}
@@ -115,7 +126,10 @@ export default function Hero({
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div
+              className="fade-up mt-8 flex flex-wrap gap-3"
+              style={{ animationDelay: "400ms" }}
+            >
               <a
                 href="#projects"
                 className="border border-ink bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-accent-deep"
@@ -159,7 +173,10 @@ export default function Hero({
             </div>
 
             {/* At-a-glance stats — derived from the data, shown here only */}
-            <dl className="mt-10 grid grid-cols-2 gap-px border border-hairline bg-hairline sm:grid-cols-4">
+            <dl
+              className="fade-up mt-10 grid grid-cols-2 gap-px border border-hairline bg-hairline sm:grid-cols-4"
+              style={{ animationDelay: "550ms" }}
+            >
               {stats.map((s) => (
                 <div key={s.label} className="bg-white px-4 py-3">
                   <dd className="font-display text-2xl font-semibold">{s.value}</dd>
