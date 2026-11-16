@@ -1,0 +1,29 @@
+[
+  {
+    "certificateName": null,
+    "certificateUrl": null,
+    "description": "",
+    "event": "Smart India Hackathon",
+    "id": "sih-2025",
+    "title": "Finalist",
+    "year": 2025
+  },
+  {
+    "certificateName": null,
+    "certificateUrl": null,
+    "description": "",
+    "event": "SSIP Vikas Saptah Hackathon",
+    "id": "ssip-2025",
+    "title": "2nd Winner",
+    "year": 2025
+  },
+  {
+    "certificateName": null,
+    "certificateUrl": null,
+    "description": "",
+    "event": "Odoo Hackathon",
+    "id": "odoo-hackathon-2026",
+    "title": "Finalist",
+    "year": 2026
+  }
+]

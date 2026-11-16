@@ -1,0 +1,12 @@
+[
+  {
+    "company": "Clueless Builders",
+    "companyUrl": "https://clueless.builders",
+    "description": "Built YouTube and Instagram scrapers for Clueless Builders' scraper system, collecting publicly available data at scale. Engineered the scrapers to work through Cloudflare protection and human-verification challenges, and contributed to the reliability and performance of the system — scraping modules, APIs, and data-processing components in Python.",
+    "duration": "1 month",
+    "id": "clueless-builders-2026",
+    "location": "Ahmedabad, Gujarat, India",
+    "period": "September 2026",
+    "role": "Software Engineer Intern"
+  }
+]
