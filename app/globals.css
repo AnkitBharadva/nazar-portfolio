@@ -160,6 +160,14 @@ body {
   animation: battu-bob 6s ease-in-out infinite;
 }
 
+/* Liquid ripple on the hero photo: the SVG turbulence filter (defined in
+   Hero.tsx) displaces the image by a few pixels. The filter itself
+   animates (base frequency drifts over 16s), so no CSS animation is
+   needed here — this class only attaches the filter. */
+.photo-ripple {
+  filter: url(#photo-ripple);
+}
+
 /* ---------- Hero name reveal ---------- */
 /* Letter-by-letter reveal on load: each letter fades in and rises ~8px,
    staggered 40ms apart — the whole name is done in ~1s, then completely
@@ -200,6 +208,9 @@ body {
   .photo-drift,
   .eye-glow {
     animation: none;
+  }
+  .photo-ripple {
+    filter: none;
   }
 }
 

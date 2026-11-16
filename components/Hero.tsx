@@ -58,6 +58,40 @@ export default function Hero({
 
   return (
     <section id="about" className="mx-auto w-full max-w-6xl px-5 pb-16 pt-10 sm:px-8 sm:pt-14">
+      {/* Liquid ripple filter for the hero photo: fractal-noise turbulence
+          displaces the image by a few pixels, and the base frequency
+          drifts slowly so the water reads as moving. Scale 5 is small
+          enough that the face barely moves — the eye catches the motion
+          in the textured water and foam, not on smooth skin or sky.
+          Desktop photo only; the mobile thumb is too small for it and
+          mobile GPUs pay the filter cost for nothing. */}
+      <svg aria-hidden="true" className="absolute h-0 w-0">
+        <defs>
+          <filter id="photo-ripple" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.012 0.02"
+              numOctaves="2"
+              seed="7"
+              result="noise"
+            >
+              <animate
+                attributeName="baseFrequency"
+                dur="16s"
+                values="0.012 0.02; 0.016 0.026; 0.012 0.02"
+                repeatCount="indefinite"
+              />
+            </feTurbulence>
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="noise"
+              scale="5"
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
+          </filter>
+        </defs>
+      </svg>
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[auto_minmax(0,5fr)_minmax(0,4fr)] lg:gap-14">
         {/* Battu rail, leftmost: the battu hangs from a short rod at the
             page's left edge, with the name and intro in the middle column
@@ -199,7 +233,7 @@ export default function Hero({
                 alt={`Portrait of ${profile.name}`}
                 width={768}
                 height={1024}
-                className="photo-drift aspect-[3/4] w-full object-cover"
+                className="photo-ripple photo-drift aspect-[3/4] w-full object-cover"
               />
             </div>
             <div className="absolute -bottom-4 -right-2">
