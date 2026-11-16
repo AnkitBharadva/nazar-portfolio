@@ -1,4 +1,3 @@
-import EvilEye from "./EvilEye";
 import LemonChilli from "./LemonChilli";
 
 /**
@@ -9,9 +8,8 @@ export default function ConceptStrip() {
   return (
     <section aria-label="How this portfolio works" className="bg-veil text-white">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-5 px-5 py-10 sm:flex-row sm:items-center sm:gap-8 sm:px-8">
-        <div className="flex shrink-0 items-center gap-4">
-          <EvilEye size={64} glow />
-          <LemonChilli width={44} />
+        <div className="shrink-0">
+          <LemonChilli width={96} />
         </div>
         <div>
           <h2 className="font-display text-2xl font-semibold leading-snug sm:text-3xl">
