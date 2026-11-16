@@ -58,15 +58,17 @@ export default function ProjectCard({
     <article
       className={`project-card relative flex flex-col border border-hairline bg-white ${ritual ? "ritual-shake" : ""}`}
     >
-      {/* Card header — always visible. Title first with the full width
-          (long names wrap to a second line instead of truncating); the
-          meta sits below in two short lines — number + language, then
-          the date — so no line can ever wrap mid-phrase, even for the
-          longest language ("Jupyter Notebook") in the narrow 4-column
-          Featured grid. The title reserves two lines of height so the
-          meta lines align across a row. */}
+      {/* Card header — always visible. Number + language on top, then
+          the title at full width (long names wrap to a second line
+          instead of truncating), then the date below — so no line can
+          ever wrap mid-phrase, even for the longest language ("Jupyter
+          Notebook") in the narrow 4-column Featured grid. The title
+          reserves two lines of height so the dates align across a row. */}
       <header className="border-b border-hairline px-5 py-4">
-        <div className="flex items-start justify-between gap-3">
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+          {String(index + 1).padStart(2, "0")} · {project.language ?? "—"}
+        </p>
+        <div className="mt-1 flex items-start justify-between gap-3">
           <h3 className="min-h-[3.125rem] min-w-0 font-display text-xl font-semibold leading-tight">
             {project.name}
           </h3>
@@ -88,10 +90,7 @@ export default function ProjectCard({
             )}
           </div>
         </div>
-        <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-          {String(index + 1).padStart(2, "0")} · {project.language ?? "—"}
-        </p>
-        <p className="mt-0.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+        <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
           {formatDate(project.updated)}
         </p>
       </header>
