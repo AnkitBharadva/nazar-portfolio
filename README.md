@@ -153,6 +153,15 @@ by default:
   (`hero` / `card` / `certificate` / `screenshot`) instead of free-form
   strings. Add new images through it and the rules follow automatically.
   Images are served as AVIF/WebP where supported (see `next.config.ts`).
+- **Photo swaps use a new filename** — the hero portrait lives at
+  `public/ankit-photo-v2.jpg` and `data/profile.json` points at it.
+  Never swap the photo by overwriting the same file: the URL never
+  changes, so browsers and the image cache keep serving the old photo
+  even after a hard refresh (seen live 22 Nov 2026 — the revert was
+  verified correct server-side, yet the old photo kept showing until
+  the URL changed). Each new portrait gets the next versioned name
+  (`ankit-photo-v3.jpg`, …) and the `photo` field updated to match;
+  the previous file stays in place so stale references never 404.
 - **Progressive rendering** (`components/ProjectsSection.tsx`) — the
   nazar collection renders only the first 9 cards, with a "Show more"
   control revealing the rest in batches of 9. The full project data stays
@@ -264,6 +273,9 @@ lib/                  types, tiers (featured / collection rules),
                       siteUrl (canonical site URL from NEXT_PUBLIC_SITE_URL)
 data/                 Seed data: projects.json, profile.json, achievements.json,
                       experience.json
-public/               ankit-photo.jpg, uploads/ (certificate uploads),
+public/               ankit-photo-v2.jpg (hero portrait; versioned filename so a
+                    photo change busts every cache — see "Photo swaps" below),
+                    ankit-photo.jpg (same bytes, kept so old references never
+                    404), uploads/ (certificate uploads),
                       screenshots/ (real result figures from the repos)
 ```
