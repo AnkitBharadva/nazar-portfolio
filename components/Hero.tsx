@@ -188,18 +188,23 @@ export default function Hero({
             </dl>
         </div>
 
-        {/* Photo column — desktop only, clean frame, no hanging battu.
-            On mobile the small portrait beside the name carries the photo. */}
-        <div className="mx-auto hidden w-full max-w-sm lg:mx-0 lg:block lg:justify-self-end">
-          <div className="relative border border-hairline bg-white p-2">
+        {/* Photo column — desktop only. The portrait fades into the page
+            on its left edge (see .photo-fade): no border, no white mat,
+            no padding — a frame would box the fade in, so the photo
+            floats and dissolves toward the text column instead, with
+            the face anchoring the opaque right edge. The eye badge sits
+            at the bottom-right corner, over the opaque part. On mobile
+            the small portrait beside the name carries the photo. */}
+        <div className="mx-auto hidden w-full max-w-md lg:mx-0 lg:block lg:justify-self-end">
+          <div className="relative">
             <div className="overflow-hidden">
               <SiteImage
                 preset="hero"
                 src={profile.photo}
                 alt={`Portrait of ${profile.name}`}
                 width={768}
-                height={1024}
-                className="photo-drift aspect-[3/4] w-full object-cover"
+                height={576}
+                className="photo-fade photo-drift aspect-[4/3] w-full object-cover"
               />
             </div>
             <div className="absolute -bottom-4 -right-2">
