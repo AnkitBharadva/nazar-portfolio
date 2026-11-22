@@ -160,17 +160,6 @@ body {
   animation: battu-bob 6s ease-in-out infinite;
 }
 
-/* Fade frame for the hero portrait: the photo dissolves into the page
-   on its left edge and is fully opaque from 30% across. This is a
-   mask (alpha), not a decorative gradient — it rebuilds the fade the
-   portrait was made with, since the uploaded PNG carried no real alpha
-   channel (its checkerboard was baked into the pixels, so the
-   checkerboard was cropped off and the fade is done here instead). */
-.photo-fade {
-  -webkit-mask-image: linear-gradient(to right, transparent, black 30%);
-  mask-image: linear-gradient(to right, transparent, black 30%);
-}
-
 /* ---------- Hero name reveal ---------- */
 /* Letter-by-letter reveal on load: each letter fades in and rises ~8px,
    staggered 40ms apart — the whole name is done in ~1s, then completely
